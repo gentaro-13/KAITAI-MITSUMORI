@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解体見積もり一括比較 | 最短1分で無料見積り</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Kanit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'heading': ['Zen Maru Gothic', 'sans-serif'],
+                        'body': ['Noto Sans JP', 'sans-serif'],
+                        'number': ['Kanit', 'sans-serif'],
+                    },
+                    colors: {
+                        'royal-blue': {
+                            '50': '#eef2ff',
+                            '100': '#e0e7ff',
+                            '200': '#c7d2fe',
+                            '300': '#a5b4fc',
+                            '400': '#818cf8',
+                            '500': '#4169E1',
+                            '600': '#4169E1',
+                            '700': '#3a5bc7',
+                            '800': '#2d47a0',
+                        },
+                        'purple': {
+                            '50': '#eef2ff',
+                            '100': '#e0e7ff',
+                            '200': '#4169E1',
+                            '500': '#4169E1',
+                            '600': '#4169E1',
+                            '700': '#3a5bc7',
+                            '800': '#2d47a0',
+                        },
+                        'gray': {
+                            '50': '#f5f8fa',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* カスタムスタイル */
+        .gradient-bg {
+            background: linear-gradient(135deg, #4169E1 0%, #3a5bc7 100%);
+        }
+        
+        /* purpleカラーをロイヤルブルーに上書き */
+        .text-purple-600,
+        a.text-purple-600,
+        span.text-purple-600,
+        button.text-purple-600,
+        .hover\:text-purple-600:hover {
+            color: #4169E1 !important;
+        }
+        
+        .bg-purple-600,
+        a.bg-purple-600,
+        button.bg-purple-600 {
+            background-color: #4169E1 !important;
+        }
+        
+        .bg-purple-700,
+        a.bg-purple-700,
+        button.bg-purple-700,
+        .hover\:bg-purple-700:hover {
+            background-color: #3a5bc7 !important;
+        }
+        
+        .border-purple-200,
+        .border-purple-500,
+        .border-purple-600 {
+            border-color: #4169E1 !important;
+        }
+        
+        .bg-purple-50 {
+            background-color: #eef2ff !important;
+        }
+        
+        .bg-purple-100 {
+            background-color: #e0e7ff !important;
+        }
+        
+        .text-purple-100 {
+            color: #eef2ff !important;
+        }
+        
+        .focus\:ring-purple-500:focus {
+            --tw-ring-color: #4169E1 !important;
+        }
+        
+        /* グラデーション */
+        .from-purple-50 {
+            --tw-gradient-from: #eef2ff var(--tw-gradient-from-position) !important;
+        }
+        
+        .to-purple-100 {
+            --tw-gradient-to: #e0e7ff var(--tw-gradient-to-position) !important;
+        }
+        
+        .from-purple-600 {
+            --tw-gradient-from: #4169E1 var(--tw-gradient-from-position) !important;
+        }
+        
+        .to-purple-800 {
+            --tw-gradient-to: #2d47a0 var(--tw-gradient-to-position) !important;
+        }
+        
+        /* 背景色 */
+        .bg-gray-50,
+        section.bg-gray-50 {
+            background-color: #f5f8fa !important;
+        }
+        .hero-bg {
+            background-image: url('hero-image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            margin-top: -70px;
+            padding-top: 100px;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .hero-bg .container {
+            width: 100%;
+            max-width: 100%;
+        }
+        @media (max-width: 768px) {
+            .hero-bg {
+                margin-top: 0;
+                padding-top: 0px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center top;
+                min-height: auto;
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+        }
+        .hero-authority {
+            position: absolute;
+            bottom: 2rem;
+            left: 1rem;
+            right: 1rem;
+            max-width: calc(100% - 2rem);
+            box-sizing: border-box;
+        }
+        @media (max-width: 768px) {
+            .hero-authority {
+                position: static;
+                bottom: auto;
+                left: auto;
+                right: auto;
+                max-width: 100%;
+                margin-top: 1rem;
+                padding: 1rem;
+            }
+        }
+        @media (min-width: 640px) {
+            .hero-authority {
+                left: 1rem;
+                right: auto;
+                max-width: 48rem; /* max-w-3xlと同じ */
+            }
+        }
+        @media (min-width: 1024px) {
+            .hero-authority {
+                left: calc((100vw - 1152px) / 2 + 1rem); /* container max-w-6xl (1152px) + px-4 */
+            }
+        }
+        /* オーバーレイを削除 */
+        /*
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        @media (min-width: 768px) {
+            .hero-content {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        .hero-text-bg {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        .hero-cta-bg {
+            background-color: rgba(31, 41, 55, 0.9); /* gray-800 with opacity */
+        }
+        .section-padding {
+            padding: 4rem 0;
+        }
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 2.5rem 0;
+            }
+        }
+        /* リセット */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        /* 固定ヘッダーのためのパディング */
+        body {
+            padding-top: 70px;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+        }
+        /* 見出しフォント */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        /* 数字と英語にKanitフォントを適用 */
+        .font-number {
+            font-family: 'Kanit', sans-serif;
+        }
+        /* 大きな数値表示にKanitフォントを適用 */
+        .text-4xl, .text-3xl, .text-2xl {
+            font-family: 'Kanit', sans-serif;
+        }
+        /* 見出し内の数値もKanitフォントを適用 */
+        h1 .text-4xl, h1 .text-3xl, h1 .text-2xl,
+        h2 .text-4xl, h2 .text-3xl, h2 .text-2xl,
+        h3 .text-4xl, h3 .text-3xl, h3 .text-2xl,
+        h4 .text-4xl, h4 .text-3xl, h4 .text-2xl {
+            font-family: 'Kanit', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50" style="background-color: #f5f8fa;">
+    <!-- 固定ヘッダー -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-2 md:py-3">
+            <div class="flex items-center justify-between">
+                <!-- 左上：アイコンとサイト名 -->
+                <div class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+                    <img src="icon.png" alt="解体見積もりレンジャー" class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
+                    <span class="text-lg md:text-2xl font-bold text-purple-600 whitespace-nowrap">
+                        解体見積もりレンジャー
+                    </span>
+                </div>
+                <!-- PC版：営業時間・電話番号・ボタン -->
+                <div class="hidden md:flex items-center gap-4">
+                    <div class="text-base text-gray-700">
+                        <span class="font-semibold">9~18時</span>
+                        <span class="text-gray-500">(土日祝も対応)</span>
+                        <span class="text-purple-600 font-bold ml-2">070-1478-0120</span>
+                    </div>
+                    <a href="#form" class="bg-purple-600 text-white font-bold py-2 px-6 rounded-lg text-base hover:bg-purple-700 transition duration-200 whitespace-nowrap">
+                        無料見積もりフォーム
+                    </a>
+                </div>
+                <!-- スマホ版：ハンバーガーメニューボタン -->
+                <button id="menu-toggle" class="md:hidden p-2 text-gray-700 hover:text-purple-600 focus:outline-none" aria-label="メニューを開く">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- ハンバーガーメニュー（スマホ版） -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-lg">
+            <div class="container mx-auto px-4 py-4 space-y-3">
+                <div class="text-sm text-gray-700 pb-3 border-b">
+                    <div class="font-semibold mb-1">9~18時 (土日祝も対応)</div>
+                    <a href="tel:070-1478-0120" class="text-purple-600 font-bold text-lg">070-1478-0120</a>
+                </div>
+                <a href="#form" class="block bg-purple-600 text-white font-bold py-3 px-4 rounded-lg text-center hover:bg-purple-700 transition duration-200">
+                    無料見積もりフォーム<br>
+                    <span class="text-xs">（かんたん入力1分！で完了！）</span>
+                </a>
+                <div class="pt-3 border-t space-y-2">
+                    <a href="privacy.html" class="block text-gray-700 hover:text-purple-600 py-2">プライバシーポリシー</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. ファーストビュー（Hero） -->
+    <section class="hero-bg text-white">
+        <div class="container mx-auto px-0 md:px-4 pt-0 pb-16 md:py-24 max-w-full">
+            <div class="max-w-6xl mx-auto">
+                <div class="hero-content max-w-3xl">
+                    <!-- テキストコンテンツ -->
+                    <!--
+                    <div class="hero-text-bg rounded-lg p-6 md:p-8 mb-6 shadow-lg">
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-gray-800">
+                            無料で複数社の解体工事を一括見積り！<br>
+                            比べて安心◎<br>
+                            適正価格を把握できます。
+                        </h1>
+                        <p class="text-lg md:text-xl mb-8 text-gray-700 leading-relaxed">
+                            いきなり1社に決めなくて大丈夫。<br>
+                            解体見積レンジャーが、解体費用の比較と相場感を整理します。
+                        </p>
+                    </div>
+                    -->
+                    <!--
+                    <div class="hero-cta-bg rounded-lg p-4 md:p-6 mb-6 shadow-lg">
+                        <a href="#form" class="inline-block bg-white text-purple-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition duration-200 shadow-lg">
+                            無料で見積りスタート
+                        </a>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ファーストビュー・メインコンテンツ -->
+    <section class="section-padding bg-gray-50" style="background-color: #f5f8fa;">
+        <div class="container mx-auto px-0">
+            <img src="section-banner1.png" alt="" class="w-full h-auto object-contain mb-12">
+        </div>
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <!-- よくある不安 -->
+                <div class="bg-white rounded-lg shadow-md p-8 md:p-10 mb-8">
+                    <div class="flex flex-col md:flex-row gap-6 md:gap-8 md:items-start">
+                        <!-- テキストセクション（PC版：左、スマホ版：上） -->
+                        <div class="flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-800">よくある不安</h3>
+                            <ul class="space-y-4 md:space-y-5">
+                                <li class="flex items-start gap-4">
+                                    <span class="text-purple-600 text-2xl font-bold flex-shrink-0">・</span>
+                                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                        見積金額が妥当なのか分からない
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <span class="text-purple-600 text-2xl font-bold flex-shrink-0">・</span>
+                                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                        業者によって言うことが違う
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <span class="text-purple-600 text-2xl font-bold flex-shrink-0">・</span>
+                                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                        追加費用が後から出ないか不安
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <span class="text-purple-600 text-2xl font-bold flex-shrink-0">・</span>
+                                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                        安すぎる業者は逆に怖い
+                                    </p>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <span class="text-purple-600 text-2xl font-bold flex-shrink-0">・</span>
+                                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                        誰に相談すればいいか分からない
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 画像セクション（PC版：右側、スマホ版：下） -->
+                        <div class="flex items-start justify-center flex-shrink-0 md:w-auto w-full">
+                            <img src="KAIJIN.png" alt="" class="w-[120%] md:w-auto h-auto object-contain max-w-full md:max-h-[450px] md:max-w-[450px]">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 私たちの立ち位置 -->
+                <div class="bg-purple-50 rounded-lg shadow-md p-8 md:p-10">
+                    <div class="flex flex-col md:flex-row gap-6 md:gap-8 md:items-start">
+                        <!-- 画像セクション（PC版：左、スマホ版：上） -->
+                        <div class="flex items-start justify-center flex-shrink-0 md:w-auto w-full">
+                            <img src="概念図.png" alt="概念図" class="w-[120%] md:w-auto h-auto object-contain max-w-full md:max-h-[400px] md:max-w-[400px]">
+                        </div>
+                        <!-- テキストセクション（PC版：右、スマホ版：下） -->
+                        <div class="flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-800">私たちの立ち位置</h3>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-4">
+                                私たちは解体業者ではありません。<br>
+                                特定の業者を売り込む立場ではなく、判断材料を整理する立場です。
+                            </p>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                解体は金額も大きく、やり直しがきかない工事です。<br>
+                                そのため「早く決めること」よりも「納得して進めること」を大切にしています。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工程が止まらない解体体制 -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-0">
+            <img src="section-banner2.png" alt="工程が止まらない解体体制" class="w-full h-auto object-contain">
+        </div>
+    </section>
+
+    <!-- 判断基準チェックリスト -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-800">
+                    解体前に、これだけは確認してください
+                </h2>
+                
+                <!-- チェックリスト -->
+                <div class="bg-white rounded-lg shadow-md p-8 md:p-10 mb-8 border-2 border-purple-200">
+                    <div class="space-y-4 md:space-y-5 mb-6">
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl text-purple-600 font-bold flex-shrink-0">□</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                見積に「一式」表記が多すぎないか
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl text-purple-600 font-bold flex-shrink-0">□</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                追加費用の条件が明記されているか
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl text-purple-600 font-bold flex-shrink-0">□</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                近隣対応の説明があるか
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl text-purple-600 font-bold flex-shrink-0">□</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                工期が曖昧になっていないか
+                            </p>
+                        </div>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-600 italic">
+                        ※ すべてYESである必要はありません。判断材料として確認してください。
+                    </p>
+                </div>
+                
+                <!-- 見積書で必ず見るべきポイント -->
+                <div class="mb-8">
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-800">見積書で必ず見るべきポイント</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-500">
+                            <p class="text-gray-700 leading-relaxed">
+                                工事項目が一式表記になっていないか
+                            </p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-500">
+                            <p class="text-gray-700 leading-relaxed">
+                                追加費用が発生する条件が明記されているか
+                            </p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-500">
+                            <p class="text-gray-700 leading-relaxed">
+                                処分費・養生費・重機回送費が含まれているか
+                            </p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-500">
+                            <p class="text-gray-700 leading-relaxed">
+                                不明点を質問した際に、明確な回答があるか
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 金額が跳ねやすいケース -->
+                <div class="mb-8">
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-800">金額が跳ねやすいケース</h3>
+                    <div class="bg-yellow-50 rounded-lg p-6 md:p-8 border-l-4 border-yellow-500">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="text-yellow-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">前面道路が狭く重機が入りにくい</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-yellow-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">残置物が多い、分別が必要</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-yellow-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">地中埋設物が見つかる可能性がある</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-yellow-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">アスベスト等の追加調査が必要になる</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 危ない業者の共通点 -->
+                <div class="mb-8">
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-800">危ない業者の共通点</h3>
+                    <div class="bg-red-50 rounded-lg p-6 md:p-8 border-l-4 border-red-500">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">見積内容の説明が曖昧</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">契約を急がせる</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">質問すると態度が変わる</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">追加費用の説明が後出し</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- よくあるトラブル例 -->
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-800">よくあるトラブル例</h3>
+                    <div class="bg-orange-50 rounded-lg p-6 md:p-8 border-l-4 border-orange-500">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="text-orange-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">工事途中で金額が増える</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-orange-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">近隣対応をしてくれない</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-orange-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">工期が大幅に延びる</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-orange-600 text-xl font-bold flex-shrink-0">・</span>
+                                <p class="text-gray-700 leading-relaxed">工事後の説明がない</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 正直なお断り -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white rounded-lg shadow-md p-8 md:p-10 border-2 border-orange-200">
+                    <div class="flex flex-col md:flex-row gap-6 md:gap-8 md:items-stretch">
+                        <!-- テキストセクション（PC版：左、スマホ版：上） -->
+                        <div class="flex-1">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800 flex items-center gap-3">
+                                <span class="text-3xl">⚠️</span>
+                                正直、以下のような方には向かない場合があります
+                            </h2>
+                            <ul class="space-y-4 mb-6">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-600 text-xl font-bold flex-shrink-0">・</span>
+                                    <p class="text-lg text-gray-700 leading-relaxed">とにかく最安だけを求めている方</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-600 text-xl font-bold flex-shrink-0">・</span>
+                                    <p class="text-lg text-gray-700 leading-relaxed">説明よりスピードを優先したい方</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-600 text-xl font-bold flex-shrink-0">・</span>
+                                    <p class="text-lg text-gray-700 leading-relaxed">比較せずに即決したい方</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-600 text-xl font-bold flex-shrink-0">・</span>
+                                    <p class="text-lg text-gray-700 leading-relaxed">坪単価だけ見れば安心と考えている方</p>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-orange-600 text-xl font-bold flex-shrink-0">・</span>
+                                    <p class="text-lg text-gray-700 leading-relaxed">近い業者なら問題ないと考えている方</p>
+                                </li>
+                            </ul>
+                            <div class="bg-orange-50 rounded-lg p-4 border-l-4 border-orange-500">
+                                <p class="text-gray-700 font-medium">
+                                    → 条件によって金額やリスクは大きく変わります。
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 画像セクション（PC版：右側、スマホ版：下） -->
+                        <div class="flex items-center justify-center flex-shrink-0 md:w-auto w-full">
+                            <img src="icon6.png" alt="" class="w-full md:w-auto h-full md:h-full object-contain max-w-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 解体の進め方（3ステップ） -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-800">
+                    解体の進め方（3ステップ）
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg shadow-md">
+                        <div class="w-20 h-20 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">STEP1</div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-800">条件整理</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            建物構造・立地・残置物・スケジュールなど前提条件を整理します。
+                        </p>
+                    </div>
+                    <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow-md">
+                        <div class="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">STEP2</div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-800">候補選定</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            条件に合う業者か、説明が明確かを確認します。
+                        </p>
+                    </div>
+                    <div class="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-lg shadow-md">
+                        <div class="w-20 h-20 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">STEP3</div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-800">最終確認</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            内容に納得した上で進めます。急ぐ必要はありません。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 安心ポイント -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-800">
+                    安心ポイント
+                </h2>
+                
+                <!-- 判断を急がなくていい理由 -->
+                <div class="bg-white rounded-lg shadow-md p-8 md:p-10 mb-8">
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-800 flex items-center gap-3">
+                        <span class="text-2xl">💡</span>
+                        判断を急がなくていい理由
+                    </h3>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        解体工事は、その場で決める必要がないケースがほとんどです。<br>
+                        見積や条件を一度整理してからでも遅くありません。
+                    </p>
+                </div>
+                
+                <!-- 相談前に読んでほしい一言 -->
+                <div class="bg-purple-50 rounded-lg shadow-md p-8 md:p-10 mb-8 border-l-4 border-purple-500">
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-800">相談前に読んでほしい一言</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        このページは、解体工事を無理に勧めるためのものではありません。<br>
+                        判断に必要なポイントを整理するためのページです。
+                    </p>
+                </div>
+                
+                <!-- 相談後にどうなるか -->
+                <div class="bg-green-50 rounded-lg shadow-md p-8 md:p-10 border-l-4 border-green-500">
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-800">相談後にどうなるか</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-600 text-xl font-bold flex-shrink-0">✓</span>
+                            <p class="text-lg text-gray-700 leading-relaxed">こちらからしつこく連絡することはありません</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-600 text-xl font-bold flex-shrink-0">✓</span>
+                            <p class="text-lg text-gray-700 leading-relaxed">その場で決断を求めることもありません</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-600 text-xl font-bold flex-shrink-0">✓</span>
+                            <p class="text-lg text-gray-700 leading-relaxed">相談だけで終了しても問題ありません</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 相談の流れ -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-800 flex items-center justify-center gap-3">
+                    <span class="text-3xl">📞</span>
+                    相談の流れ
+                </h2>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg shadow-md p-8 md:p-10">
+                    <ol class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="flex-shrink-0 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg">1</span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-800">LINEで状況を簡単に教えてください</h3>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="flex-shrink-0 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg">2</span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-800">判断ポイントを整理します</h3>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="flex-shrink-0 w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</span>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-800">必要に応じて次のステップをご案内します</h3>
+                            </div>
+                        </li>
+                    </ol>
+                    <div class="mt-8 bg-white bg-opacity-70 rounded-lg p-4 border-l-4 border-purple-500">
+                        <p class="text-gray-700 font-medium">
+                            ※ 相談だけで終了しても問題ありません。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 私たちがやらないこと -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-800 flex items-center justify-center gap-3">
+                    <span class="text-3xl">🚫</span>
+                    私たちがやらないこと
+                </h2>
+                
+                <div class="bg-white rounded-lg shadow-md p-8 md:p-10">
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="text-red-600 text-2xl font-bold flex-shrink-0">×</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">強引な契約誘導</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-red-600 text-2xl font-bold flex-shrink-0">×</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">業者への丸投げ</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-red-600 text-2xl font-bold flex-shrink-0">×</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">不明点を曖昧にしたまま進めること</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 解体費用で理解しておくべきポイント -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-800 flex items-center justify-center gap-3">
+                    <span class="text-3xl">💰</span>
+                    解体費用で理解しておくべきポイント
+                </h2>
+                
+                <div class="bg-blue-50 rounded-lg shadow-md p-8 md:p-10 mb-8 border-l-4 border-blue-500">
+                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-4">
+                        解体費用は建物の大きさだけで決まるものではありません。
+                    </p>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">変動要因：</h3>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-600 text-xl font-bold flex-shrink-0">・</span>
+                            <p class="text-gray-700">立地条件</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-600 text-xl font-bold flex-shrink-0">・</span>
+                            <p class="text-gray-700">建物構造</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-600 text-xl font-bold flex-shrink-0">・</span>
+                            <p class="text-gray-700">残置物の有無</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-blue-600 text-xl font-bold flex-shrink-0">・</span>
+                            <p class="text-gray-700">近隣状況</p>
+                        </li>
+                    </ul>
+                    <p class="text-gray-700 font-medium">
+                        → 坪単価だけで比較すると実際の金額とズレが生じやすくなります。
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-8 md:p-10 border-2 border-purple-200">
+                    <h3 class="text-xl md:text-2xl font-bold mb-6 text-gray-800">見積を見る際のポイント：</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-600 text-xl font-bold flex-shrink-0">✓</span>
+                            <p class="text-lg text-gray-700 leading-relaxed">何にどのくらいの費用がかかっているのか</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-600 text-xl font-bold flex-shrink-0">✓</span>
+                            <p class="text-lg text-gray-700 leading-relaxed">内訳と条件を確認する</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-600 text-xl font-bold flex-shrink-0">✓</span>
+                            <p class="text-lg text-gray-700 leading-relaxed">不明点をそのままにしない</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-purple-600 text-xl font-bold flex-shrink-0">✓</span>
+                            <p class="text-lg text-gray-700 leading-relaxed">納得できる説明があるかを判断基準にする</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 見積を取る前に準備すると楽なこと -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-800 flex items-center justify-center gap-3">
+                    <span class="text-3xl">📝</span>
+                    見積を取る前に準備すると楽なこと
+                </h2>
+                
+                <div class="bg-white rounded-lg shadow-md p-8 md:p-10">
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="text-green-600 text-2xl font-bold flex-shrink-0">✓</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">建物の図面があれば用意しておく</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-green-600 text-2xl font-bold flex-shrink-0">✓</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">残置物の有無を大まかに把握する</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-green-600 text-2xl font-bold flex-shrink-0">✓</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">近隣で気になる点を書き出しておく</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 3 -->
+    <section class="bg-purple-600 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-xl mb-4">簡単5ステップで最適な業者を見つけられます</p>
+            <a href="#form" class="inline-block bg-white text-purple-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-200">
+                無料見積りを始める
+            </a>
+        </div>
+    </section>
+
+    <!-- 6. よくある質問（FAQ） -->
+    <section class="section-padding bg-white" id="faq">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+                    よくある質問
+                </h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-gray-800">Q. 相談すると必ず業者を紹介されますか？</h3>
+                        <p class="text-gray-700">A. ご希望がなければ、無理に紹介することはありません。</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-gray-800">Q. まだ解体するか決めていなくても相談できますか？</h3>
+                        <p class="text-gray-700">A. 問題ありません。検討段階での相談も多くいただいています。</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-gray-800">Q. 追加費用が出ることはありますか？</h3>
+                        <p class="text-gray-700">A. 条件によって発生する場合があります。事前に確認すべき点を整理します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 見積りフォーム（CTA） -->
+    <section class="section-padding bg-gradient-to-r from-purple-600 to-purple-800 text-white" id="form">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+                    無料見積りを今すぐ依頼
+                </h2>
+                <p class="text-center mb-8 text-purple-100">
+                    最短1分で入力完了。最大6社から見積りが届きます
+                </p>
+                
+                <form class="bg-white text-gray-800 p-8 rounded-lg shadow-xl">
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">お名前 <span class="text-red-500">*</span></label>
+                        <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">電話番号 <span class="text-red-500">*</span></label>
+                        <input type="tel" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">メールアドレス <span class="text-red-500">*</span></label>
+                        <input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">建物の種類 <span class="text-red-500">*</span></label>
+                        <select required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="">選択してください</option>
+                            <option value="wood">木造</option>
+                            <option value="steel">鉄骨造</option>
+                            <option value="rc">RC造（鉄筋コンクリート）</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">建物の規模（坪数）</label>
+                        <input type="number" placeholder="例：30" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">所在地（都道府県） <span class="text-red-500">*</span></label>
+                        <input type="text" required placeholder="例：東京都" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">ご希望の見積り件数</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="3">3社</option>
+                            <option value="4">4社</option>
+                            <option value="5">5社</option>
+                            <option value="6" selected>6社（最大）</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">その他ご要望・質問</label>
+                        <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-purple-700 transition duration-200 text-lg">
+                        無料見積りを依頼する
+                    </button>
+                    <p class="text-xs text-gray-500 text-center mt-4">
+                        送信いただいた情報は厳重に管理され、見積り対応以外の目的では使用いたしません。
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. フッター -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span class="text-2xl">🏢</span>
+                            会社情報
+                        </h3>
+                        <p class="text-gray-300 text-sm mb-2"><span class="font-semibold">会社名：</span> 株式会社HARMONY</p>
+                        <p class="text-gray-300 text-sm mb-2"><span class="font-semibold">サービス名：</span> 解体見積もりレンジャー</p>
+                        <p class="text-gray-300 text-sm mb-2"><span class="font-semibold">電話番号：</span> 070-1478-0120</p>
+                        <p class="text-gray-300 text-sm"><span class="font-semibold">営業時間：</span> 9:00〜18:00（土日祝も対応）</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">お問い合わせ</h3>
+                        <p class="text-gray-300 text-sm mb-2">電話：070-1478-0120</p>
+                        <p class="text-gray-300 text-sm">受付時間：9:00〜18:00（土日祝も対応）</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">リンク</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="privacy.html" class="text-gray-300 hover:text-white">プライバシーポリシー</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                    <p>&copy; 2026 HARMONY.Inc All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ハンバーガーメニューの開閉
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    // アイコンの切り替え（×マーク）
+                    const icon = menuToggle.querySelector('svg');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+                    } else {
+                        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+                    }
+                });
+                
+                // メニュー外をクリックで閉じる
+                document.addEventListener('click', function(event) {
+                    if (!menuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.classList.add('hidden');
+                        const icon = menuToggle.querySelector('svg');
+                        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+                    }
+                });
+            }
+        });
+
+        // フォーム送信処理（実際の実装ではサーバーに送信）
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('見積り依頼を受け付けました。担当者よりご連絡いたします。');
+        });
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
+

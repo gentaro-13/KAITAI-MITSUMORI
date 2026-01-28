@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解体見積もり一括比較 | 最短1分で無料見積り</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Kanit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'heading': ['Zen Maru Gothic', 'sans-serif'],
+                        'body': ['Noto Sans JP', 'sans-serif'],
+                        'number': ['Kanit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* カスタムスタイル */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .hero-bg {
+            background-image: url('hero-image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            margin-top: -70px;
+            padding-top: 70px;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .hero-bg .container {
+            width: 100%;
+            max-width: 100%;
+        }
+        @media (max-width: 768px) {
+            .hero-bg {
+                margin-top: 0;
+                padding-top: 0px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center top;
+                min-height: auto;
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+        }
+        .hero-authority {
+            position: absolute;
+            bottom: 2rem;
+            left: 1rem;
+            right: 1rem;
+            max-width: calc(100% - 2rem);
+            box-sizing: border-box;
+        }
+        @media (max-width: 768px) {
+            .hero-authority {
+                position: static;
+                bottom: auto;
+                left: auto;
+                right: auto;
+                max-width: 100%;
+                margin-top: 1rem;
+                padding: 1rem;
+            }
+        }
+        @media (min-width: 640px) {
+            .hero-authority {
+                left: 1rem;
+                right: auto;
+                max-width: 48rem; /* max-w-3xlと同じ */
+            }
+        }
+        @media (min-width: 1024px) {
+            .hero-authority {
+                left: calc((100vw - 1152px) / 2 + 1rem); /* container max-w-6xl (1152px) + px-4 */
+            }
+        }
+        /* オーバーレイを削除 */
+        /*
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        @media (min-width: 768px) {
+            .hero-content {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        .hero-text-bg {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        .hero-cta-bg {
+            background-color: rgba(31, 41, 55, 0.9); /* gray-800 with opacity */
+        }
+        .section-padding {
+            padding: 4rem 0;
+        }
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 2.5rem 0;
+            }
+        }
+        /* リセット */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        /* 固定ヘッダーのためのパディング */
+        body {
+            padding-top: 70px;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+        }
+        /* 見出しフォント */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        /* 数字と英語にKanitフォントを適用 */
+        .font-number {
+            font-family: 'Kanit', sans-serif;
+        }
+        /* 大きな数値表示にKanitフォントを適用 */
+        .text-4xl, .text-3xl, .text-2xl {
+            font-family: 'Kanit', sans-serif;
+        }
+        /* 見出し内の数値もKanitフォントを適用 */
+        h1 .text-4xl, h1 .text-3xl, h1 .text-2xl,
+        h2 .text-4xl, h2 .text-3xl, h2 .text-2xl,
+        h3 .text-4xl, h3 .text-3xl, h3 .text-2xl,
+        h4 .text-4xl, h4 .text-3xl, h4 .text-2xl {
+            font-family: 'Kanit', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 固定ヘッダー -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-2 md:py-3">
+            <div class="flex items-center justify-between">
+                <!-- 左上：アイコンとサイト名 -->
+                <div class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+                    <img src="icon.png" alt="解体見積もりレンジャー" class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
+                    <span class="text-lg md:text-2xl font-bold text-purple-600 whitespace-nowrap">
+                        解体見積もりレンジャー
+                    </span>
+                </div>
+                <!-- PC版：営業時間・電話番号・ボタン -->
+                <div class="hidden md:flex items-center gap-4">
+                    <div class="text-base text-gray-700">
+                        <span class="font-semibold">9~18時</span>
+                        <span class="text-gray-500">(土日祝も対応)</span>
+                        <span class="text-purple-600 font-bold ml-2">0120-XXX-XXX</span>
+                    </div>
+                    <a href="#form" class="bg-purple-600 text-white font-bold py-2 px-6 rounded-lg text-base hover:bg-purple-700 transition duration-200 whitespace-nowrap">
+                        無料見積もりフォーム
+                    </a>
+                </div>
+                <!-- スマホ版：ハンバーガーメニューボタン -->
+                <button id="menu-toggle" class="md:hidden p-2 text-gray-700 hover:text-purple-600 focus:outline-none" aria-label="メニューを開く">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- ハンバーガーメニュー（スマホ版） -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-lg">
+            <div class="container mx-auto px-4 py-4 space-y-3">
+                <div class="text-sm text-gray-700 pb-3 border-b">
+                    <div class="font-semibold mb-1">9~18時 (土日祝も対応)</div>
+                    <a href="tel:0120-XXX-XXX" class="text-purple-600 font-bold text-lg">0120-XXX-XXX</a>
+                </div>
+                <a href="#form" class="block bg-purple-600 text-white font-bold py-3 px-4 rounded-lg text-center hover:bg-purple-700 transition duration-200">
+                    無料見積もりフォーム<br>
+                    <span class="text-xs">（かんたん入力1分！で完了！）</span>
+                </a>
+                <div class="pt-3 border-t space-y-2">
+                    <a href="#" class="block text-gray-700 hover:text-purple-600 py-2">プライバシーポリシー</a>
+                    <a href="#" class="block text-gray-700 hover:text-purple-600 py-2">利用規約</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. ファーストビュー（Hero） -->
+    <section class="hero-bg text-white">
+        <div class="container mx-auto px-0 md:px-4 pt-0 pb-16 md:py-24 max-w-full">
+            <div class="max-w-6xl mx-auto">
+                <div class="hero-content max-w-3xl">
+                    <!-- テキストコンテンツ -->
+                    <!--
+                    <div class="hero-text-bg rounded-lg p-6 md:p-8 mb-6 shadow-lg">
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-gray-800">
+                            無料で複数社の解体工事を一括見積り！<br>
+                            比べて安心◎<br>
+                            適正価格を把握できます。
+                        </h1>
+                        <p class="text-lg md:text-xl mb-8 text-gray-700 leading-relaxed">
+                            いきなり1社に決めなくて大丈夫。<br>
+                            解体見積レンジャーが、解体費用の比較と相場感を整理します。
+                        </p>
+                    </div>
+                    -->
+                    <!--
+                    <div class="hero-cta-bg rounded-lg p-4 md:p-6 mb-6 shadow-lg">
+                        <a href="#form" class="inline-block bg-white text-purple-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition duration-200 shadow-lg">
+                            無料で見積りスタート
+                        </a>
+                    </div>
+                    -->
+                </div>
+                <!-- 権威性（PC版：左下に配置） -->
+                <div class="hero-authority hero-cta-bg rounded-lg p-4 md:p-6 shadow-lg hidden md:block">
+                    <div class="flex flex-col md:flex-row gap-4 md:gap-6 text-sm md:text-base text-white">
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold">お客様満足度No.1</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold">提携数○○社突破</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 権威性（スマホ版：ヒーローバナー下に配置） -->
+    <div class="md:hidden bg-gray-800 bg-opacity-90 rounded-lg mx-4 my-4 p-4 shadow-lg">
+        <div class="flex flex-col gap-4 text-sm text-white">
+            <div class="flex items-center gap-2">
+                <span class="font-bold">お客様満足度No.1</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="font-bold">提携数○○社突破</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 顧客の課題に共感するパート -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 text-gray-800 leading-relaxed">
+                    解体工事を考えた時の「分からない」ことの不安
+                </h2>
+                
+                <div class="bg-white rounded-lg shadow-md p-8 md:p-10 mb-8">
+                    <ul class="space-y-4 md:space-y-5">
+                        <li class="flex items-start gap-4">
+                            <span class="text-purple-600 text-2xl font-bold flex-shrink-0">・</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                相場が分からない
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-purple-600 text-2xl font-bold flex-shrink-0">・</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                どんな業者が来るか分からない
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-purple-600 text-2xl font-bold flex-shrink-0">・</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                解体した方がいいのか分からない
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-purple-600 text-2xl font-bold flex-shrink-0">・</span>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                                何から始めればいいか分からない
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="text-center">
+                    <p class="text-xl md:text-2xl text-gray-800 leading-relaxed font-medium">
+                        解体見積レンジャーは、<br>
+                        解体費用や条件の「分かりにくい」を整理するところからお手伝いします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 解決策・メリットパート -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 md:mb-16 text-gray-800">
+                    レンジャーに頼むと、ここが変わる！
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- メリット1：資産価値UP -->
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 md:p-8 shadow-md">
+                        <div class="mb-4">
+                            <span class="inline-block bg-purple-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-3">
+                                資産価値UP
+                            </span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-800">
+                            古家付きより「更地」が人気！
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            買い手がつきやすく、解体費用を引いても手取りが増える可能性大。
+                        </p>
+                    </div>
+                    
+                    <!-- メリット2：最安値保証 -->
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 md:p-8 shadow-md">
+                        <div class="mb-4">
+                            <span class="inline-block bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-3">
+                                最安値保証
+                            </span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-800">
+                            厳選優良業者の「一括比較」
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            競争原理が働くから、適正価格〜最安値が見つかる。
+                        </p>
+                    </div>
+                    
+                    <!-- メリット3：完全代行 -->
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 md:p-8 shadow-md">
+                        <div class="mb-4">
+                            <span class="inline-block bg-green-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-3">
+                                完全代行
+                            </span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-800">
+                            面倒な交渉・断り連絡も不要
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            あなたはレンジャーと話すだけ。業者の選定からお断りまで代行します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. サービス概要／特徴 -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+                    サービス特徴
+                </h2>
+                
+                <!-- 3ステップ -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8 text-center text-gray-700">簡単3ステップ</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">①</div>
+                            <h4 class="text-xl font-bold mb-3 text-gray-800">入力</h4>
+                            <p class="text-gray-600">建物情報を簡単入力。最短1分で完了</p>
+                        </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">②</div>
+                            <h4 class="text-xl font-bold mb-3 text-gray-800">無料見積り</h4>
+                            <p class="text-gray-600">最大6社から見積りを無料で受取</p>
+                        </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">③</div>
+                            <h4 class="text-xl font-bold mb-3 text-gray-800">比較・依頼</h4>
+                            <p class="text-gray-600">見積りを比較して最適な業者を選定</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- メリット -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 border-l-4 border-purple-600 bg-gray-50 rounded">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">✓ 完全無料</h4>
+                        <p class="text-gray-600">見積り依頼から比較まで、一切費用はかかりません</p>
+                    </div>
+                    <div class="p-6 border-l-4 border-purple-600 bg-gray-50 rounded">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">✓ 複数社比較</h4>
+                        <p class="text-gray-600">最大6社の見積りを一度に比較できる</p>
+                    </div>
+                    <div class="p-6 border-l-4 border-purple-600 bg-gray-50 rounded">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">✓ 安心保証</h4>
+                        <p class="text-gray-600">着手金保証・完工保証で万全のサポート</p>
+                    </div>
+                    <div class="p-6 border-l-4 border-purple-600 bg-gray-50 rounded">
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">✓ 補助金サポート</h4>
+                        <p class="text-gray-600">補助金・助成金の申請サポートも対応</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 1 -->
+    <section class="bg-purple-600 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-xl mb-4">今すぐ無料で見積りを依頼しませんか？</p>
+            <a href="#form" class="inline-block bg-white text-purple-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-200">
+                無料見積りをスタート
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. 信頼性・実績 -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+                    信頼と実績
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl font-bold text-purple-600 mb-2">9,000+</div>
+                        <div class="text-gray-600 mb-4">年間相談実績</div>
+                        <p class="text-sm text-gray-500">多くのお客様にご利用いただいています</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl font-bold text-purple-600 mb-2">4.8</div>
+                        <div class="text-gray-600 mb-4">平均評価</div>
+                        <div class="text-yellow-400 text-xl mb-2">★★★★★</div>
+                        <p class="text-sm text-gray-500">満足度の高いサービスを提供</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-4xl font-bold text-purple-600 mb-2">6社</div>
+                        <div class="text-gray-600 mb-4">提携業者数</div>
+                        <p class="text-sm text-gray-500">厳選された信頼できる業者と提携</p>
+                    </div>
+                </div>
+
+                <!-- 顧客の声 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">お客様の声</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="border-l-4 border-purple-600 pl-4">
+                            <div class="text-yellow-400 mb-2">★★★★★</div>
+                            <p class="text-gray-700 mb-2">「複数社の見積りを一度に比較できて、とても便利でした。最安値の業者を選べて助かりました。」</p>
+                            <p class="text-sm text-gray-500">東京都 不動産会社 A様</p>
+                        </div>
+                        <div class="border-l-4 border-purple-600 pl-4">
+                            <div class="text-yellow-400 mb-2">★★★★★</div>
+                            <p class="text-gray-700 mb-2">「補助金の申請サポートもあり、費用を大幅に抑えることができました。スタッフの対応も丁寧でした。」</p>
+                            <p class="text-sm text-gray-500">大阪府 不動産会社 B様</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 2 -->
+    <section class="bg-purple-600 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-xl mb-4">信頼できる業者と出会えます</p>
+            <a href="#form" class="inline-block bg-white text-purple-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-200">
+                今すぐ無料見積り
+            </a>
+        </div>
+    </section>
+
+    <!-- 事例セクション -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+                    施工事例
+                </h2>
+                
+                <!-- カルーセルコンテナ -->
+                <div class="relative">
+                    <!-- カードコンテナ -->
+                    <div id="cases-carousel" class="overflow-hidden">
+                        <div id="cases-track" class="flex transition-transform duration-300 ease-in-out gap-6">
+                            <!-- 事例カード1 -->
+                            <div class="carousel-card flex-shrink-0 w-full md:w-1/2 lg:w-1/3">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                    <div class="bg-gray-300 aspect-video flex items-center justify-center">
+                                        <span class="text-gray-500">施工写真</span>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="space-y-2 mb-4">
+                                            <div class="text-sm text-gray-600">A社 <span class="font-bold text-purple-600 font-number">1,250万円</span></div>
+                                            <div class="text-sm text-gray-600">B社 <span class="font-bold text-purple-600 font-number">1,380万円</span></div>
+                                            <div class="text-sm text-gray-600">C社 <span class="font-bold text-purple-600 font-number">1,420万円</span></div>
+                                            <div class="text-sm text-gray-600">D社 <span class="font-bold text-purple-600 font-number">1,350万円</span></div>
+                                            <div class="text-sm text-gray-600">E社 <span class="font-bold text-purple-600 font-number">1,290万円</span></div>
+                                            <div class="text-sm text-gray-600">F社 <span class="font-bold text-purple-600 font-number">1,310万円</span></div>
+                                        </div>
+                                        <div class="border-t pt-4 space-y-2 text-sm text-gray-700">
+                                            <div><span class="font-semibold">所在地：</span>東京都八王子市</div>
+                                            <div><span class="font-semibold">建物：</span>RC造7階建618坪</div>
+                                            <div><span class="font-semibold">工事期間：</span>60日間</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 事例カード2 -->
+                            <div class="carousel-card flex-shrink-0 w-full md:w-1/2 lg:w-1/3">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                    <div class="bg-gray-300 aspect-video flex items-center justify-center">
+                                        <span class="text-gray-500">施工写真</span>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="space-y-2 mb-4">
+                                            <div class="text-sm text-gray-600">A社 <span class="font-bold text-purple-600 font-number">980万円</span></div>
+                                            <div class="text-sm text-gray-600">B社 <span class="font-bold text-purple-600 font-number">1,050万円</span></div>
+                                            <div class="text-sm text-gray-600">C社 <span class="font-bold text-purple-600 font-number">1,120万円</span></div>
+                                            <div class="text-sm text-gray-600">D社 <span class="font-bold text-purple-600 font-number">1,000万円</span></div>
+                                            <div class="text-sm text-gray-600">E社 <span class="font-bold text-purple-600 font-number">990万円</span></div>
+                                            <div class="text-sm text-gray-600">F社 <span class="font-bold text-purple-600 font-number">1,080万円</span></div>
+                                        </div>
+                                        <div class="border-t pt-4 space-y-2 text-sm text-gray-700">
+                                            <div><span class="font-semibold">所在地：</span>東京都八王子市</div>
+                                            <div><span class="font-semibold">建物：</span>RC造7階建618坪</div>
+                                            <div><span class="font-semibold">工事期間：</span>60日間</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 事例カード3 -->
+                            <div class="carousel-card flex-shrink-0 w-full md:w-1/2 lg:w-1/3">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                    <div class="bg-gray-300 aspect-video flex items-center justify-center">
+                                        <span class="text-gray-500">施工写真</span>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="space-y-2 mb-4">
+                                            <div class="text-sm text-gray-600">A社 <span class="font-bold text-purple-600 font-number">1,550万円</span></div>
+                                            <div class="text-sm text-gray-600">B社 <span class="font-bold text-purple-600 font-number">1,680万円</span></div>
+                                            <div class="text-sm text-gray-600">C社 <span class="font-bold text-purple-600 font-number">1,720万円</span></div>
+                                            <div class="text-sm text-gray-600">D社 <span class="font-bold text-purple-600 font-number">1,650万円</span></div>
+                                            <div class="text-sm text-gray-600">E社 <span class="font-bold text-purple-600 font-number">1,590万円</span></div>
+                                            <div class="text-sm text-gray-600">F社 <span class="font-bold text-purple-600 font-number">1,610万円</span></div>
+                                        </div>
+                                        <div class="border-t pt-4 space-y-2 text-sm text-gray-700">
+                                            <div><span class="font-semibold">所在地：</span>東京都八王子市</div>
+                                            <div><span class="font-semibold">建物：</span>RC造7階建618坪</div>
+                                            <div><span class="font-semibold">工事期間：</span>60日間</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ナビゲーションボタン -->
+                    <button id="prev-btn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-8 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition z-10 hidden md:flex items-center justify-center">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <button id="next-btn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-8 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition z-10 hidden md:flex items-center justify-center">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- インジケーター -->
+                    <div id="carousel-indicators" class="flex justify-center gap-2 mt-6">
+                        <button class="indicator w-2 h-2 rounded-full bg-purple-600 transition"></button>
+                        <button class="indicator w-2 h-2 rounded-full bg-gray-300 transition"></button>
+                        <button class="indicator w-2 h-2 rounded-full bg-gray-300 transition"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 解体費用・相場の説明 -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+                    解体費用の相場
+                </h2>
+                
+                <div class="mb-8 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                    <p class="text-gray-700">解体費用は建物の構造や規模によって大きく異なります。以下は目安としてご参考ください。</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">木造住宅</h3>
+                        <div class="text-2xl font-bold text-purple-600 mb-2 font-number">3,000円〜5,000円</div>
+                        <div class="text-sm text-gray-500 mb-4">/坪</div>
+                        <p class="text-gray-600 text-sm">一般的な木造住宅の解体費用相場です</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">鉄骨造</h3>
+                        <div class="text-2xl font-bold text-purple-600 mb-2 font-number">5,000円〜8,000円</div>
+                        <div class="text-sm text-gray-500 mb-4">/坪</div>
+                        <p class="text-gray-600 text-sm">鉄骨造の建物はやや高めの相場です</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">RC造（鉄筋コンクリート）</h3>
+                        <div class="text-2xl font-bold text-purple-600 mb-2 font-number">8,000円〜12,000円</div>
+                        <div class="text-sm text-gray-500 mb-4">/坪</div>
+                        <p class="text-gray-600 text-sm">RC造は最も高額になる傾向があります</p>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500">
+                    <h4 class="text-lg font-bold mb-3 text-gray-800">💡 補助金活用で費用負担を抑える</h4>
+                    <p class="text-gray-700 mb-2">自治体によっては解体工事に対する補助金・助成金制度があります。当サービスでは、補助金申請のサポートも行っておりますので、お気軽にご相談ください。</p>
+                </div>
+
+                <div class="mt-8 bg-gray-50 p-6 rounded-lg">
+                    <h4 class="text-lg font-bold mb-3 text-gray-800">費用の内訳について</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>基本解体費用（建物の取り壊し）</li>
+                        <li>廃棄物処理費用（産業廃棄物の運搬・処分）</li>
+                        <li>オプション工事（アスベスト除去、地盤改良など）</li>
+                        <li>諸経費（申請費用、保険料など）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 利用の流れ（Step） -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+                    利用の流れ
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-start gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg">1</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-800">無料見積りフォーム入力</h3>
+                            <p class="text-gray-600">建物の種類、規模、所在地などの基本情報を入力してください。最短1分で完了します。</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-start gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg">2</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-800">見積り受取り</h3>
+                            <p class="text-gray-600">最大6社から見積りが届きます。メールまたは電話でご連絡いたします。</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-start gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-800">比較／業者選定</h3>
+                            <p class="text-gray-600">複数の見積りを比較して、最適な業者を選定してください。不明点があればお気軽にご質問ください。</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-start gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg">4</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-800">依頼・契約</h3>
+                            <p class="text-gray-600">選んだ業者と直接契約を結びます。当サービスは仲介手数料をいただきません。</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-start gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg">5</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-gray-800">工事着工</h3>
+                            <p class="text-gray-600">契約後、日程を調整して工事が開始されます。安心の完工保証付きです。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 3 -->
+    <section class="bg-purple-600 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-xl mb-4">簡単5ステップで最適な業者を見つけられます</p>
+            <a href="#form" class="inline-block bg-white text-purple-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition duration-200">
+                無料見積りを始める
+            </a>
+        </div>
+    </section>
+
+    <!-- 6. よくある質問（FAQ） -->
+    <section class="section-padding bg-white" id="faq">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+                    よくある質問
+                </h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-gray-800">Q. 見積りは本当に無料ですか？</h3>
+                        <p class="text-gray-700">A. はい、完全無料です。見積り依頼から比較まで、一切費用はかかりません。業者との契約後も、当サービスから仲介手数料をいただくことはありません。</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-gray-800">Q. 何社から見積りが来ますか？</h3>
+                        <p class="text-gray-700">A. 最大6社から見積りをお取り寄せできます。お客様のご希望に応じて、見積り件数を調整することも可能です。</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-gray-800">Q. 訪問見積もりは必要ですか？</h3>
+                        <p class="text-gray-700">A. 初期の見積りはオンラインで可能ですが、正確な見積りのため、最終的には現地調査が必要になる場合があります。業者と直接日程を調整していただけます。</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-gray-800">Q. キャンセルはできますか？</h3>
+                        <p class="text-gray-700">A. はい、見積り依頼のキャンセルはいつでも可能です。見積りを受けた後でも、契約する義務はありません。お気軽にご利用ください。</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-gray-800">Q. 個人でも依頼できますか？</h3>
+                        <p class="text-gray-700">A. はい、個人のお客様でもご利用いただけます。不動産会社様だけでなく、個人で建物を解体される方も大歓迎です。</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 text-gray-800">Q. 補助金の申請サポートはありますか？</h3>
+                        <p class="text-gray-700">A. はい、補助金・助成金の申請サポートを行っております。お住まいの自治体の制度に応じて、申請手続きをサポートいたします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 見積りフォーム（CTA） -->
+    <section class="section-padding bg-gradient-to-r from-purple-600 to-purple-800 text-white" id="form">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+                    無料見積りを今すぐ依頼
+                </h2>
+                <p class="text-center mb-8 text-purple-100">
+                    最短1分で入力完了。最大6社から見積りが届きます
+                </p>
+                
+                <form class="bg-white text-gray-800 p-8 rounded-lg shadow-xl">
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">お名前 <span class="text-red-500">*</span></label>
+                        <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">電話番号 <span class="text-red-500">*</span></label>
+                        <input type="tel" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">メールアドレス <span class="text-red-500">*</span></label>
+                        <input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">建物の種類 <span class="text-red-500">*</span></label>
+                        <select required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="">選択してください</option>
+                            <option value="wood">木造</option>
+                            <option value="steel">鉄骨造</option>
+                            <option value="rc">RC造（鉄筋コンクリート）</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">建物の規模（坪数）</label>
+                        <input type="number" placeholder="例：30" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">所在地（都道府県） <span class="text-red-500">*</span></label>
+                        <input type="text" required placeholder="例：東京都" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">ご希望の見積り件数</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="3">3社</option>
+                            <option value="4">4社</option>
+                            <option value="5">5社</option>
+                            <option value="6" selected>6社（最大）</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">その他ご要望・質問</label>
+                        <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-purple-700 transition duration-200 text-lg">
+                        無料見積りを依頼する
+                    </button>
+                    <p class="text-xs text-gray-500 text-center mt-4">
+                        送信いただいた情報は厳重に管理され、見積り対応以外の目的では使用いたしません。
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. フッター -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">運営会社</h3>
+                        <p class="text-gray-300 text-sm mb-2">株式会社解体見積もり</p>
+                        <p class="text-gray-300 text-sm">〒100-0001</p>
+                        <p class="text-gray-300 text-sm">東京都千代田区千代田1-1-1</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">お問い合わせ</h3>
+                        <p class="text-gray-300 text-sm mb-2">電話：0120-000-000</p>
+                        <p class="text-gray-300 text-sm mb-2">メール：info@example.com</p>
+                        <p class="text-gray-300 text-sm">受付時間：平日 9:00〜18:00</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">リンク</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="text-gray-300 hover:text-white">プライバシーポリシー</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">利用規約</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">特定商取引法に基づく表記</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                    <p>&copy; 2024 解体見積もり一括比較. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ハンバーガーメニューの開閉
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    // アイコンの切り替え（×マーク）
+                    const icon = menuToggle.querySelector('svg');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+                    } else {
+                        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+                    }
+                });
+                
+                // メニュー外をクリックで閉じる
+                document.addEventListener('click', function(event) {
+                    if (!menuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.classList.add('hidden');
+                        const icon = menuToggle.querySelector('svg');
+                        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+                    }
+                });
+            }
+        });
+
+        // フォーム送信処理（実際の実装ではサーバーに送信）
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('見積り依頼を受け付けました。担当者よりご連絡いたします。');
+        });
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 事例カルーセル
+        (function() {
+            const track = document.getElementById('cases-track');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const indicators = document.querySelectorAll('.indicator');
+            const cards = document.querySelectorAll('.carousel-card');
+            
+            if (!track || !prevBtn || !nextBtn) return;
+            
+            let currentIndex = 0;
+            let cardsPerView = 1; // スマホは1枚
+            
+            function updateCardsPerView() {
+                const width = window.innerWidth;
+                if (width >= 1024) { // lg以上
+                    cardsPerView = 3;
+                } else if (width >= 768) { // md以上
+                    cardsPerView = 2;
+                } else {
+                    cardsPerView = 1;
+                }
+            }
+            
+            function updateCarousel() {
+                updateCardsPerView();
+                const cardWidth = track.offsetWidth / cardsPerView;
+                const gap = 24; // gap-6 = 1.5rem = 24px
+                const translateX = -(currentIndex * (cardWidth + gap));
+                track.style.transform = `translateX(${translateX}px)`;
+                
+                // インジケーター更新（ループ対応）
+                const displayIndex = currentIndex % cards.length;
+                indicators.forEach((indicator, index) => {
+                    if (index === displayIndex) {
+                        indicator.classList.remove('bg-gray-300');
+                        indicator.classList.add('bg-purple-600');
+                    } else {
+                        indicator.classList.remove('bg-purple-600');
+                        indicator.classList.add('bg-gray-300');
+                    }
+                });
+                
+                // ボタンは常に表示（ループするため）
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+            }
+            
+            function goToNext() {
+                currentIndex++;
+                // ループ処理：最後の次は最初に戻る
+                if (currentIndex >= cards.length) {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            }
+            
+            function goToPrev() {
+                currentIndex--;
+                // ループ処理：最初の前は最後に戻る
+                if (currentIndex < 0) {
+                    currentIndex = cards.length - 1;
+                }
+                updateCarousel();
+            }
+            
+            // スマホでは常にカルーセル、PCでは3つ以上の場合のみカルーセル
+            function shouldShowCarousel() {
+                updateCardsPerView();
+                return window.innerWidth < 768 || cards.length > cardsPerView;
+            }
+            
+            function initCarousel() {
+                if (shouldShowCarousel()) {
+                    // カルーセルモード
+                    track.style.overflow = 'hidden';
+                    prevBtn.addEventListener('click', goToPrev);
+                    nextBtn.addEventListener('click', goToNext);
+                    updateCarousel();
+                } else {
+                    // 通常表示モード（全て表示）
+                    track.style.transform = 'translateX(0)';
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                }
+            }
+            
+            // 初期化
+            initCarousel();
+            
+            // リサイズ時の処理
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    currentIndex = 0;
+                    initCarousel();
+                }, 250);
+            });
+            
+            // インジケータークリック
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
+
