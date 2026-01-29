@@ -915,40 +915,42 @@
                     最短1分で入力完了。最大6社から見積りが届きます
                 </p>
                 
-                <form class="bg-white text-gray-800 p-8 rounded-lg shadow-xl">
+                <form id="estimate-form" class="bg-white text-gray-800 p-8 rounded-lg shadow-xl">
+                    <input type="hidden" name="access_key" id="web3forms-access-key" value="464425c9-802b-4c23-8c30-8690a8a80fe9">
                     <div class="mb-6">
                         <label class="block text-sm font-bold mb-2">お名前 <span class="text-red-500">*</span></label>
-                        <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <input type="text" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
                     </div>
                     <div class="mb-6">
                         <label class="block text-sm font-bold mb-2">電話番号 <span class="text-red-500">*</span></label>
-                        <input type="tel" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <input type="tel" name="tel" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
                     </div>
                     <div class="mb-6">
                         <label class="block text-sm font-bold mb-2">メールアドレス <span class="text-red-500">*</span></label>
-                        <input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <input type="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
                     </div>
                     <div class="mb-6">
-                        <label class="block text-sm font-bold mb-2">建物の種類 <span class="text-red-500">*</span></label>
-                        <select required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <label class="block text-sm font-bold mb-2">解体のご相談内容 <span class="text-red-500">*</span></label>
+                        <select name="consultation_type" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
                             <option value="">選択してください</option>
-                            <option value="wood">木造</option>
-                            <option value="steel">鉄骨造</option>
-                            <option value="rc">RC造（鉄筋コンクリート）</option>
-                            <option value="other">その他</option>
+                            <option value="建物解体（戸建て・古家など）">建物解体（戸建て・古家など）</option>
+                            <option value="建物解体（スケルトン・部分解体など）">建物解体（スケルトン・部分解体など）</option>
+                            <option value="外構・付帯工事（ブロック塀・庭・土間など）">外構・付帯工事（ブロック塀・庭・土間など）</option>
+                            <option value="倉庫・小屋・カーポートなど">倉庫・小屋・カーポートなど</option>
+                            <option value="その他（不明・迷ったらこちら）">その他（不明・迷ったらこちら）</option>
                         </select>
                     </div>
                     <div class="mb-6">
                         <label class="block text-sm font-bold mb-2">建物の規模（坪数）</label>
-                        <input type="number" placeholder="例：30" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <input type="number" name="scale" placeholder="例：30" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
                     </div>
                     <div class="mb-6">
                         <label class="block text-sm font-bold mb-2">所在地（都道府県） <span class="text-red-500">*</span></label>
-                        <input type="text" required placeholder="例：東京都" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <input type="text" name="prefecture" required placeholder="例：東京都" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
                     </div>
                     <div class="mb-6">
                         <label class="block text-sm font-bold mb-2">ご希望の見積り件数</label>
-                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <select name="estimate_count" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
                             <option value="3">3社</option>
                             <option value="4">4社</option>
                             <option value="5">5社</option>
@@ -957,7 +959,7 @@
                     </div>
                     <div class="mb-6">
                         <label class="block text-sm font-bold mb-2">その他ご要望・質問</label>
-                        <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                        <textarea name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
                     </div>
                     <button type="submit" class="w-full bg-purple-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-purple-700 transition duration-200 text-lg">
                         無料見積りを依頼する
@@ -969,6 +971,14 @@
             </div>
         </div>
     </section>
+
+    <!-- 送信完了モーダル -->
+    <div id="submit-success-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/50 p-4" aria-hidden="true">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-8 text-center">
+            <p class="text-gray-800 text-lg leading-relaxed mb-6">お問い合わせありがとうございます。担当者より2営業日以内にご連絡いたします。</p>
+            <button type="button" id="modal-close-btn" class="w-full bg-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-purple-700 transition duration-200">閉じる</button>
+        </div>
+    </div>
 
     <!-- 8. フッター -->
     <footer class="bg-gray-800 text-white py-12">
@@ -1033,11 +1043,65 @@
             }
         });
 
-        // フォーム送信処理（実際の実装ではサーバーに送信）
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('見積り依頼を受け付けました。担当者よりご連絡いたします。');
-        });
+        // フォーム送信：Web3Formsで harmony.hirose31@gmail.com に送信
+        // https://web3forms.com でメール登録してアクセスキーを取得し、上の hidden input の value に設定してください
+        const form = document.getElementById('estimate-form');
+        const modal = document.getElementById('submit-success-modal');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const accessKey = document.getElementById('web3forms-access-key').value;
+                if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+                    alert('管理者設定：Web3Formsのアクセスキーを設定してください。');
+                    return;
+                }
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = '送信中...';
+                const formData = new FormData(form);
+                const body = Object.fromEntries(formData.entries());
+                try {
+                    const res = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(body)
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        form.reset();
+                        document.getElementById('web3forms-access-key').value = accessKey;
+                        if (modal) {
+                            modal.classList.remove('hidden');
+                            modal.classList.add('flex');
+                            modal.setAttribute('aria-hidden', 'false');
+                        }
+                    } else {
+                        alert('送信に失敗しました。お手数ですが電話（070-1478-0120）にてお問い合わせください。');
+                    }
+                } catch (err) {
+                    alert('送信に失敗しました。お手数ですが電話（070-1478-0120）にてお問い合わせください。');
+                }
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            });
+        }
+        if (modalCloseBtn && modal) {
+            modalCloseBtn.addEventListener('click', function() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                modal.setAttribute('aria-hidden', 'true');
+            });
+            modal.addEventListener('click', function(ev) {
+                if (ev.target === modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            });
+        }
 
         // スムーススクロール
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
