@@ -230,12 +230,12 @@
             width: 100%;
             overflow-x: hidden;
         }
-        /* 固定ヘッダーのためのパディング */
+        /* 固定ヘッダーのためのパディング（スマホではヘッダー非固定のため0） */
         body {
-            padding-top: 70px;
+            padding-top: 0;
             font-family: 'Noto Sans JP', sans-serif;
         }
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
             body {
                 padding-top: 70px;
             }
@@ -259,11 +259,35 @@
         h4 .text-4xl, h4 .text-3xl, h4 .text-2xl {
             font-family: 'Kanit', sans-serif;
         }
+        /* スマホ用スティッキーフッター（10%スクロールで下から表示、トップでフェードアウト） */
+        #mobile-sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 40;
+            display: flex;
+            transform: translateY(100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.35s ease-out, opacity 0.35s ease-out, visibility 0.35s;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+        }
+        #mobile-sticky-footer.is-visible {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        @media (min-width: 768px) {
+            #mobile-sticky-footer {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50" style="background-color: #f5f8fa;">
-    <!-- 固定ヘッダー -->
-    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <!-- ヘッダー（スマホでは固定にせず、PCでは固定） -->
+    <header class="relative md:fixed top-0 left-0 right-0 bg-white shadow-md z-50">
         <div class="container mx-auto px-4 py-2 md:py-3">
             <div class="flex items-center justify-between">
                 <!-- 左上：アイコンとサイト名 -->
@@ -314,6 +338,21 @@
         </div>
     </header>
 
+    <!-- スマホ用スティッキーフッター（10%スクロールで表示・トップで非表示） -->
+    <div id="mobile-sticky-footer" class="md:hidden" aria-hidden="true">
+        <a href="tel:050-1792-2951" class="flex-1 flex flex-col items-center justify-center py-4 px-3 text-white bg-[#3a5bc7] hover:bg-[#2d47a0] transition-colors min-w-0">
+            <span class="text-xs mb-1 opacity-90">こちらを押すとお電話できます</span>
+            <span class="text-xl font-bold tracking-wide">050-1792-2951</span>
+            <span class="text-xs mt-1 opacity-90">9~18時(土日祝も対応)</span>
+        </a>
+        <a href="#form" class="flex-1 flex flex-col items-center justify-center py-4 px-3 text-white bg-[#4169E1] hover:bg-[#3a5bc7] transition-colors min-w-0 border-l border-white/20">
+            <span class="text-base font-bold">無料見積もりフォーム</span>
+            <span class="text-xs mt-1 opacity-90 flex items-center gap-1">かんたん入力!1分で完了!
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </span>
+        </a>
+    </div>
+
     <!-- 1. ファーストビュー（Hero） -->
     <section class="hero-bg text-white">
         <div class="container mx-auto px-0 md:px-4 pt-0 pb-16 md:py-24 max-w-full">
@@ -352,8 +391,8 @@
         </div>
         <div class="container mx-auto px-4">
             <div class="max-w-6xl mx-auto">
-                <!-- よくある不安 -->
-                <div class="bg-white rounded-lg shadow-md p-8 md:p-10 mb-8">
+                <!-- よくある不安（スマホで左右パディングをやや詰めて1行の文字数を確保） -->
+                <div class="bg-white rounded-lg shadow-md px-5 py-8 md:p-10 mb-8">
                     <div class="flex flex-col md:flex-row gap-6 md:gap-8 md:items-start">
                         <!-- テキストセクション（PC版：左、スマホ版：上） -->
                         <div class="flex-1">
@@ -1141,6 +1180,34 @@
                 }
             });
         });
+
+        // スマホ用スティッキーフッター：ページ10%スクロールで表示、トップ付近でフェードアウト
+        (function() {
+            var footer = document.getElementById('mobile-sticky-footer');
+            if (!footer) return;
+            var showThreshold = window.innerHeight * 0.1;
+            var hideThreshold = 80;
+            var ticking = false;
+            function updateFooter() {
+                var y = window.scrollY || window.pageYOffset;
+                if (y > showThreshold) {
+                    footer.classList.add('is-visible');
+                    footer.setAttribute('aria-hidden', 'false');
+                } else if (y <= hideThreshold) {
+                    footer.classList.remove('is-visible');
+                    footer.setAttribute('aria-hidden', 'true');
+                }
+                ticking = false;
+            }
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(updateFooter);
+                    ticking = true;
+                }
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            updateFooter();
+        })();
 
     </script>
 </body>
